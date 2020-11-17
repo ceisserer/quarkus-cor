@@ -1,0 +1,28 @@
+= Beispiel - Chain of Responsibility
+
+Ziel dieser Übung ist die praktische Anwendung eines Patterns anhand eines einfachen Beispiels auf Basis von Quarkus.
+
+
+=== Ausgangslage
+
+Sie möchten einen REST-Endpoint mit folgenden optionalen Funktionen erweitern:
+
+* Jeder Request soll nach stdout (auf der Console) gelogged werden
+* Es soll vor jedem Request sichergestellt werden, dass ein Token als HTTP-Header übergeben wurde (z.B. JWT, muss für das Beispiel nicht weiter geprüft werden)
+* An jeden Response soll ein zusätzlicher Header angehängt werden, der die aktuelle Auslastung des Servers enthält (System.getProcessCpuLoad())
+* ...
+
+Auslesen der aktuellen Systemauslastung ("load average") unter Java:
+[source]
+----
+        OperatingSystemMXBean bean = (com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+        System.out.println(bean.getSystemLoadAverage());
+----
+
+=== Aufgabenstellung
+
+Überlegen Sie sich ein Design, mit welchem die oben genannten Anforderungen elegant erfüllt werden können.
+Halten Sie dabei Grundsätze von gutem Objektorientiertem Design ein:
+
+* Single Responsibility
+* Dependency Inversion
